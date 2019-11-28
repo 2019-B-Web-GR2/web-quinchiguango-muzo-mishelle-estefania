@@ -60,7 +60,7 @@ export class AppController {
 
   @Get ('obtener-cabeceras')
   obtenerCabeceras(
-      @Headers () cabeceras
+      //@Headers () cabeceras
   ){
     console.log(cabeceras);
     return`Las cabeceras son: ${cabeceras}`;
