@@ -10,14 +10,87 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();  
   }
+
+
+  //private obtenerSegundos() : number{}
+
+  //query params
+
+  @Get('bienvenida')
+  public bienvenida(
+      @Query () parametrosDeConsulta:any,
+      @Query('nombre') nombreUsuario: string,
+      @Query('numero') numeroUsuario: string,
+      @Query('casado') casadoUsuario: string,
+):string {
+
+    console.log(parametrosDeConsulta);
+
+    return `Mensaje ${parametrosDeConsulta.nombre} Numero  ${parametrosDeConsulta.numero}`;
+
+  }
+
+  //Params parmas
+  @Get('incripciones-curso /:idcurso/:cedula')    //   /:nombreParametro
+  public incripcionCurso (
+      @Param () parametrosDeRuta
+  ):string {
+
+    console.log(parametrosDeRuta);
+
+    return `Te inscribiste al curso: ${parametrosDeRuta.idCurso}  ${parametrosDeRuta.cedula}`;
+
+  }
+
+  //Body parmas
+  @Post ('almorzar')
+  @HttpCode(200)
+  public almorzar (
+      @body () parametrosDeCuerpo
+
+  ):string {
+
+    console.log(parametrosDeCuerpo);
+
+    return `Te inscribiste al curso: ${parametrosDeCuerpo}`;
+
+  }
+
+  //obtener cabeceras
+
+  @Get ('obtener-cabeceras')
+  obtenerCabeceras(
+      @Headers () cabeceras
+  ){
+    console.log(cabeceras);
+    return`Las cabeceras son: ${cabeceras}`;
+  }
 }
+
+interface ObjetoBienvenida{
+  nombre?:string;
+  numero?:string;
+  casado?:string;
+}
+
+
+interface ObjetoInscripcion{
+  idCurso: string;
+  cedula: string;
+}
+
+
+
+
+
+
 
 //Typescript
 // var nombre: string = "Nika"; Nunca se utiliza
-let apellido:string = "Olmedo"; // Mutable
+let apellido:string = "Quinchiguango"; // Mutable
 const cedula:string = "1720572773"; // Inmutable
-apellido = "Velez"; // REASIGNAR "=" Mutable
-//cedula = "18"; // :( INMUTABLE -NO REASIGNAR
+apellido = "Muzo"; // REASIGNAR "=" Mutable
+//cedula = "1723902472"; // :( INMUTABLE -NO REASIGNAR
 
 // Variables Primitivas
 const casado:boolean = false; //boolean
@@ -76,7 +149,7 @@ class Usuario{
 }
 
 
-Class Usuario2{
+C/*lass Usuario2{
 Constructor(
 Public nombre:string, //parámetro requerido
 Public apellido?:string,//parámetro opcional
@@ -84,7 +157,7 @@ Public apellido?:string,//parámetro opcional
 }
 Const adrian = new Usuario2(nombre: “Mishelle”);
 Const vicente = new Usuario2(nombre: “Estefania” , apellido: “Quinchiguango”);
-
+*/
 
 interface Entrenador {
 id: number;
