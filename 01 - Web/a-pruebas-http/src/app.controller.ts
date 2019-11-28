@@ -78,13 +78,6 @@ interface ObjetoInscripcion{
   idCurso: string;
   cedula: string;
 }
-
-
-
-
-
-
-
 //Typescript
 // var nombre: string = "Nika"; Nunca se utiliza
 let apellido:string = "Quinchiguango"; // Mutable
