@@ -73,7 +73,6 @@ interface ObjetoBienvenida{
   casado?:string;
 }
 
-
 interface ObjetoInscripcion{
   idCurso: string;
   cedula: string;
