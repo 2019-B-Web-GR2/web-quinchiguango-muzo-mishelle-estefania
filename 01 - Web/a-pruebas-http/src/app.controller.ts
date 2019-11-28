@@ -14,6 +14,10 @@ export class AppController {
 
   //private obtenerSegundos() : number{}
 
+
+
+
+
   //query params
 
   @Get('bienvenida')
@@ -22,7 +26,7 @@ export class AppController {
       @Query('nombre') nombreUsuario: string,
       @Query('numero') numeroUsuario: string,
       @Query('casado') casadoUsuario: string,
-):string {
+  ):string {
 
     console.log(parametrosDeConsulta);
 
@@ -77,6 +81,11 @@ interface ObjetoInscripcion{
   idCurso: string;
   cedula: string;
 }
+
+
+
+
+
 //Typescript
 // var nombre: string = "Nika"; Nunca se utiliza
 let apellido:string = "Quinchiguango"; // Mutable
