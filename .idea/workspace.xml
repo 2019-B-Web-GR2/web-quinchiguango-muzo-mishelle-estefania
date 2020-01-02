@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="380f739f-c248-4e21-9aa5-e874a9785834" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.entity.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/arreglo-usuario.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/arreglo-usuario.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/usuario.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +63,7 @@
       <workItem from="1574970566903" duration="4411000" />
       <workItem from="1574975128640" duration="294000" />
       <workItem from="1577905956071" duration="601000" />
-      <workItem from="1577914236651" duration="3448000" />
+      <workItem from="1577914236651" duration="7955000" />
     </task>
     <servers />
   </component>
