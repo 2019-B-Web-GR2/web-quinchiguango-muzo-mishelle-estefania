@@ -3,15 +3,17 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {UsuarioEntity} from "./usuario.entity";
 import {DeleteResult, Like, MoreThan, Repository} from "typeorm";
 
-
 @Injectable()
 export class UsuarioService {
     constructor(
-        @InjectRepository(UsuarioEntity) // Inyectar Dependencias
+        //decorador
+        @InjectRepository(UsuarioEntity) // Inyectar Dependencias recibe una entidad
+        //variable
         private _repositorioUsuario: Repository<UsuarioEntity>
     ) {
     }
 
+    //metodo
     encontrarUno(id: number): Promise<UsuarioEntity | undefined> {
         return this._repositorioUsuario
             .findOne(id);

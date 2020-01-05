@@ -41,7 +41,7 @@ export class UsuarioController {
             session.usuario={//ponemos una nueva propiedad
                 nombre:'Mishelle',
                 userID:1,
-                roles:['Administrador']
+                roles:['Administrador'] //puede borrar  y actualizar
             }
 
             return 'ok';
