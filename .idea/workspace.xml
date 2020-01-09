@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="380f739f-c248-4e21-9aa5-e874a9785834" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.update-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.update-dto.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +68,8 @@
       <workItem from="1577940911415" duration="918000" />
       <workItem from="1578024477967" duration="1375000" />
       <workItem from="1578079741851" duration="5117000" />
-      <workItem from="1578194384692" duration="8943000" />
+      <workItem from="1578194384692" duration="9029000" />
+      <workItem from="1578526112703" duration="5527000" />
     </task>
     <servers />
   </component>

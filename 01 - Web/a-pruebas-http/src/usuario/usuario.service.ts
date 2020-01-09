@@ -14,10 +14,19 @@ export class UsuarioService {
     }
 
     //metodo
-    encontrarUno(id: number): Promise<UsuarioEntity | undefined> {
+    encontrarUno(id: number): Promise<UsuarioEntity | undefined> { //devuelve una promesa de usuario o undefine
         return this._repositorioUsuario
             .findOne(id);
     }
+
+    //metodo async
+    /*async encontrarUno1(id: number){
+        console.log('Empezo');
+        const usuario = await this._repositorioUsuario
+            .findOne(id);
+        console.log('termino');
+        return usuario;
+    }*/
 
     crearUno(usuario: UsuarioEntity) {
         return this._repositorioUsuario
