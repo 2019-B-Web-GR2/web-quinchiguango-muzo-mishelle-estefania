@@ -17,6 +17,17 @@ export class UsuarioController {
     ) :Promise<UsuarioEntity | undefined>{
         return this._usuarioService.encontrarUno(Number(identificador));
     }
+
+    @Post()
+    crearUnUsuario( //nombre de la funcion
+        @Body() usuario:UsuarioEntity
+    ) : Promise<UsuarioEntity>{   //devuelve una promesa de usuarioEntity
+        return this._usuarioService
+            .crearUno
+            (usuario   //mandamos el usuario
+            );
+    }
+
 }
 
 

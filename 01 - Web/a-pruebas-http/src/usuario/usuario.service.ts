@@ -30,7 +30,7 @@ export class UsuarioService {
 
     crearUno(usuario: UsuarioEntity) {
         return this._repositorioUsuario
-            .save(usuario);
+            .save<UsuarioEntity>(usuario);
     }
 
     borrarUno(id: number): Promise<DeleteResult> {
@@ -47,4 +47,30 @@ export class UsuarioService {
             .save(usuario); // UPSERT
     }
 
-        }
+    buscar(
+        where:any={},
+        skip: number=0, //para mandar los 10 primeros.
+        take: number=10
+    ){
+        this._repositorioUsuario
+            .find({
+               // where:{
+               //     cedula:'1723902472'  //mandamos lo q quiero buscar
+               // }
+
+                /*where:[
+                    {
+                        nombre:'Mishelle'
+                    },
+                    {
+                        nombre:'Estefania'
+                    }
+                ],*/
+
+                where:where,
+                skip:0,
+                take:10
+            })
+    }
+
+}
