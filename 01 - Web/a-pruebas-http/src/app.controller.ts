@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, Param, Post, Query} from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()   //recibe el segmento de la Url 
@@ -50,7 +50,7 @@ export class AppController {
   @Post ('almorzar')
   @HttpCode(200)
   public almorzar (
-      @body () parametrosDeCuerpo
+      @Body () parametrosDeCuerpo
 
   ):string {
 
@@ -61,14 +61,14 @@ export class AppController {
   }
 
   //obtener cabeceras
-
+/*
   @Get ('obtener-cabeceras')
   obtenerCabeceras(
-      //@Headers () cabeceras
+      @Headers() cabeceras
   ){
     console.log(cabeceras);
     return`Las cabeceras son: ${cabeceras}`;
-  }
+  }*/
 }
 
 interface ObjetoBienvenida{
@@ -150,7 +150,7 @@ class Usuario{
 }
 
 
-C/*lass Usuario2{
+/*Class Usuario2{
 Constructor(
 Public nombre:string, //parámetro requerido
 Public apellido?:string,//parámetro opcional
@@ -175,11 +175,11 @@ const ash: Entrenador ={
    id:1,
    nombre: 'Ash',
 };
-const pikachu:Pokemon ={
+/*const pikachu:Pokemon ={
   id:1,
   nombre:'Pikachu',
   entrenador: ash,
-};
+};*/
 
 
 

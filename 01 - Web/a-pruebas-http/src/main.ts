@@ -1,3 +1,4 @@
+// @ts-ignore
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as express from 'express';
@@ -8,7 +9,8 @@ const FileStore = require('session-filestore')(session);
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule) as any;
+    app.set('view engine', 'ejs');
   //realizamos algunas configuraciones
   app.use(
       session({
@@ -21,6 +23,6 @@ async function bootstrap() {
       })
   )
 
-  await app.listen(3000);
+  await app.listen(4000);
 }
 bootstrap();
