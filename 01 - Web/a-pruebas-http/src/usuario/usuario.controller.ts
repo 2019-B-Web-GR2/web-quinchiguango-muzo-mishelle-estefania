@@ -15,7 +15,7 @@ import {UsuarioService} from "./usuario.service";
 import {UsuarioEntity} from "./usuario.entity";
 import {DeleteResult} from "typeorm";
 import * as Joi from '@hapi/joi';
-import {UsuarioCreateDto} from "./UsuarioCreateDto";
+import {UsuarioCreateDto} from "./usuario.create-dto";
 import {validate} from "class-validator";
 import {UsuarioUpdateDto} from "./usuario.update-dto";
 import {ok} from "assert";
@@ -31,6 +31,30 @@ export class UsuarioController {
         private readonly _usuarioService: UsuarioService,
     ) {
     }
+
+
+
+    //ejs
+    @Get('ruta/mostrar-usuarios')
+    asyns rutaMostrarUsuarios(
+        @Res() res,
+    ){
+        const usuarios= this._usuarioService.buscar();
+        res.render(
+            'usuario/rutas/buscar-mostrar-usuario',
+            {
+                datos:{
+                    //usuarios:usuarios, -> nueva sintaxis
+                    usuarios,
+                },
+            },
+        );
+    }
+
+
+
+
+
 
     @Get('ejemplos')
     ejemplos(
