@@ -22,38 +22,27 @@ import {ok} from "assert";
 
 @Controller('usuario')
 export class UsuarioController {
-
-    //Adm -> Crea, actualiza y elimina
-    //Sup -> actualiza
-
     constructor(
-        // tslint:disable-next-line:variable-name
         private readonly _usuarioService: UsuarioService,
     ) {
     }
 
-
-
     //ejs
     @Get('ruta/mostrar-usuarios')
-    asyns rutaMostrarUsuarios(
+    async rutaMostrarUsuarios(
         @Res() res,
-    ){
-        const usuarios= this._usuarioService.buscar();
+    ) {
+        const usuarios = await this._usuarioService.buscar();
         res.render(
             'usuario/rutas/buscar-mostrar-usuario',
             {
-                datos:{
-                    //usuarios:usuarios, -> nueva sintaxis
+                datos: {
+                    // usuarios:usuarios -> nueva sintaxis,
                     usuarios,
                 },
             },
         );
     }
-
-
-
-
 
 
     @Get('ejemplos')
@@ -63,10 +52,39 @@ export class UsuarioController {
         res.render('ejemplo',{
             datos:{
                 nombre:'Mishelle',
+                suma: this.suma, // Definicion de la funcion
+                joi: Joi,
             } ,
         });
     }
+    suma(numUno, numDos) {
+        return numUno + numDos;
+    }
 
+    @Post('login')
+    login(
+        @Body('username') username: string,
+        @Body('password') password: string,
+        @Session() session,
+    ) {
+        console.log('Session', session);
+        if (username === 'adrian' && password === '1234') {
+            session.usuario = {
+                nombre: 'Adrian',
+                userId: 1,
+                roles: ['Administrador'],
+            };
+            return 'ok';
+        } else if (username === 'vicente' && password === '1234') {
+            session.usuario = {
+                nombre: 'Vicente',
+                userId: 2,
+                roles: ['Supervisor'],
+            };
+            return 'ok';
+        }
+        throw new BadRequestException('Error', 'Error autenticando');
+    }
 
     @Get('sesion')
     sesion(
@@ -263,31 +281,19 @@ crearUnUsuario( //nombre de la funcion
             );
     }
 
-   /* @Get()
+  /*  @Get()
     async buscar(
         @Query('skip') skip?: string | number,
         @Query('take') take?: string | number,
         @Query('where') where?: string,
         @Query('order') order?: string,
     ): Promise<UsuarioEntity[]> {
-        const nuevoEsquema = Joi.object({
-            skip: Joi.number(),
-        });
-        try {
-            const objetoValidado = await nuevoEsquema
-                .validateAsync({
-                    skip: skip,
-                });
-            console.log('objetoValidado', objetoValidado);
-        } catch (err) {
-            console.error('Error', err);
-        }
-
-        if (skip) {
-            skip = +skip;
-        }
-        if (take) {
-            take = +take;
+        if (order) {
+            try {
+                order = JSON.parse(order);
+            } catch (e) {
+                order = undefined;
+            }
         }
         if (where) {
             try {
@@ -296,43 +302,31 @@ crearUnUsuario( //nombre de la funcion
                 where = undefined;
             }
         }
-        if (order) {
-            try {
-                order = JSON.parse(order);
-            } catch (e) {
-                order = undefined;
-            }
+        if (skip) {
+            skip = +skip;
+            // const nuevoEsquema = Joi.object({
+            //     skip: Joi.number()
+            // });
+            // try {
+            //     const objetoValidado = await nuevoEsquema
+            //         .validateAsync({
+            //             skip: skip
+            //         });
+            //     console.log('objetoValidado', objetoValidado);
+            // } catch (error) {
+            //     console.error('Error',error);
+            // }
         }
-        return this._usuarioService.buscar(
-            where,
-            skip as number,
-            take as number,
-            order,
-        );
-    }
-*/
-    @Post('login')
-    login(
-        @Body('username') username: string,
-        @Body('password') password: string,
-        @Session() session,
-    ) {
-        console.log('Session', session);
-        if (username === 'adrian' && password === '1234') {
-            session.usuario = {
-                nombre: 'Adrian',
-                userId: 1,
-                roles: ['Administrador'],
-            };
-            return 'ok';
-        } else if (username === 'vicente' && password === '1234') {
-            session.usuario = {
-                nombre: 'Vicente',
-                userId: 2,
-                roles: ['Supervisor'],
-            };
-            return 'ok';
+        if (take) {
+            take = +take;
         }
-        throw new BadRequestException('Error', 'Error autenticando');
-    }
+        return this._usuarioService
+            .buscar(
+                where,
+                skip as number,
+                take as number,
+                order,
+            );
+    }*/
+
 }

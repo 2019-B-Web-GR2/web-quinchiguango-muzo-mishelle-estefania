@@ -1,5 +1,6 @@
+import {IsEmpty, IsNotEmpty, IsNumber, IsString, MaxLength, Min, MinLength} from "class-validator";
+
 export class UsuarioUpdateDto{
-    nombre: String
 
     @IsNotEmpty()
     @IsString()
@@ -7,7 +8,7 @@ export class UsuarioUpdateDto{
     @MaxLength(80)
     nombre: String
     @IsEmpty()
-    cedula. string;
+    cedula: string;
     @IsNotEmpty()
     @IsNumber()
     @Min(0)

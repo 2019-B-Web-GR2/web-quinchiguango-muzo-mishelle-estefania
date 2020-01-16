@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="380f739f-c248-4e21-9aa5-e874a9785834" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/UsuarioCreateDto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/ejemplo.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.create-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.create-dto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.update-dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.update-dto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/ejemplo.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/ejemplo.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="ts.external.directory.path" value="C:\Users\Mishu\Documents\GitHub\web-quinchiguango-muzo-mishelle-estefania\01 - Web\a-pruebas-http\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

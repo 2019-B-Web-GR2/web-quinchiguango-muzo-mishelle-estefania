@@ -1,7 +1,7 @@
 <% const version = "1.0.0"; %>
 <% const total = 1 + 2; %>
-<% const mishelle= {
-    nombre: 'Mishelle'
+<% const adrian= {
+    nombre: 'Adrian'
 }; %>
 <% const arregloNumeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; %>
 <% const urlBase = "https://images.mediotiempo.com/"%>
@@ -25,14 +25,15 @@
 
 <!--Fin Iterar-->
 
-<% if(mishelle.esProfesor){%>
-    <h1>Bienvenido  <%estudiante<%mishelle.nombre%></h1>
+<% if(adrian.esProfesor){%>
+    <h1>Bienvenido profe <%=adrian.nombre%></h1>
 <p>Suma:<%=datos.suma(2,3)%></p>
 <% } else {%>
-    <h1>Bienvenido profesor</h1>
+    <h1>Bienvenido estudiante</h1>
+<p> Suma: <%datos.suma(2,3)%></p>
 <% }%>
 <h1>
-    HOLAAAA <%= datos.nombre %>
+    HOLA <%= datos.nombre %>
 </h1>
 <p>Version: <%= version %></p>
 <p>Total: <%= total %></p>
