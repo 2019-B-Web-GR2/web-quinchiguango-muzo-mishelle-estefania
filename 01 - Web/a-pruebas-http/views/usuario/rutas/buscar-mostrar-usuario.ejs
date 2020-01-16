@@ -1,7 +1,17 @@
-<h1>Ruta mostrar usuario</h1>
+<%- include('../../compartido/cabecera')%>
 
-<%-include('../componentes/mostrar-tabla',
-{
-usuarios:datos.usuarios
-})%>
+<--! para tener los espacios de los lados de la tabla  lo ponemos en un cotainer-->
+<div class=""container>
+    <h1>Ruta mostrar usuario</h1>
+    <a href="/usuario/ruta/crear-usuario">
+        <button type ="button" class="btn btn-primary">
+            Buscar Usuario
+        </button>
+    </a> <--! Anchor --> ancla-->
+    <%-include('../componentes/mostrar-tabla',
+    {
+    usuarios:datos.usuarios
+    })%>
+</div>
 
+<%- include('../../compartido/pie-de-pagina')%>

@@ -14,10 +14,6 @@ export class AppController {
 
   //private obtenerSegundos() : number{}
 
-
-
-
-
   //query params
 
   @Get('bienvenida')

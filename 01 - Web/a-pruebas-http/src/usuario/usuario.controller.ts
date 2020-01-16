@@ -45,6 +45,17 @@ export class UsuarioController {
     }
 
 
+    @Get('ruta/mostrar-usuarios')
+    async rutaCrearUsuarios(
+        @Res() res,
+    ) {
+        res.render(
+            'usuario/rutas/crear-usuario',
+            {
+            },
+        );
+    }
+
     @Get('ejemplos')
     ejemplos(
         @Res() res,

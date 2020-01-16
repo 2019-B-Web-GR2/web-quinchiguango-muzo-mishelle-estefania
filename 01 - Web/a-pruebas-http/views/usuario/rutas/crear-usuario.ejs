@@ -1,0 +1,41 @@
+<%- include('../../compartido/cabecera')%>
+
+<div class ="container">
+    <h1> Crear Usuario </h1>
+
+    <form action="https://www.google.com"
+    method="GET"
+    >
+        <div class="form-group">
+        <label for="nombreID">Nombre</label>  //LABEL Y EL INPUT NO SE DEBEN SEPARAR input debe tener un nombre y un identificador
+        <input id="nombreID"
+               type="text"
+               name="nombre"
+               placeholder="Ej: Mishelle Qunchiguango"
+               title="Ingresar nombre de usuario"
+               class="form-control">
+            <small id="nombreIDHELP"
+            Class=""form-text text-muted>
+                Ingresar un nombre valido
+            </small>
+        </div>
+      <!--  <button type ="submit">Submit</button> //se va a google
+        <button type ="reset">Reset</button>
+        <button type ="button">Boton</button>
+        <button >Boton sin nada</button> //x defecto es un boton tipo reset-->
+
+        <button type ="submit"
+        class=" "btn btn-success
+        >
+            Crear Usuario
+        </button>
+
+        <button type ="reset"
+        class="btn btn-secondary"
+        >
+            Limpiar Formulario
+        </button>
+    </form>
+</div>
+
+<%- include('../../compartido/pie-de-pagina')%>
