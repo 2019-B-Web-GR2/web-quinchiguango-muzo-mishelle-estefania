@@ -7,27 +7,28 @@ import {
     Param,
     Post,
     Put,
-    Query, Req, Res,
+    Query,
+    Req, Res,
     Session,
-    UnauthorizedException
 } from '@nestjs/common';
-import {UsuarioService} from "./usuario.service";
-import {UsuarioEntity} from "./usuario.entity";
-import {DeleteResult} from "typeorm";
+import {UsuarioService} from './usuario.service';
+import {UsuarioEntity} from './usuario.entity';
+import {DeleteResult} from 'typeorm';
 import * as Joi from '@hapi/joi';
-import {UsuarioCreateDto} from "./usuario.create-dto";
-import {validate} from "class-validator";
-import {UsuarioUpdateDto} from "./usuario.update-dto";
-import {ok} from "assert";
+import {UsuarioCreateDto} from './usuario.create-dto';
+import {validate} from 'class-validator';
+import {UsuarioUpdateDto} from './usuario.update-dto';
+
+// JS const Joi = require('@hapi/joi');
 
 @Controller('usuario')
 export class UsuarioController {
     constructor(
         private readonly _usuarioService: UsuarioService,
     ) {
+
     }
 
-    //ejs
     @Get('ruta/mostrar-usuarios')
     async rutaMostrarUsuarios(
         @Res() res,
@@ -44,30 +45,34 @@ export class UsuarioController {
         );
     }
 
-
-    @Get('ruta/mostrar-usuarios')
-    async rutaCrearUsuarios(
+    @Get('ruta/crear-usuario')
+    rutaCrearUsuario(
+        @Query('error') error: string,
         @Res() res,
     ) {
         res.render(
             'usuario/rutas/crear-usuario',
             {
+                datos: {
+                    error,
+                },
             },
         );
     }
 
-    @Get('ejemplos')
-    ejemplos(
+    @Get('ejemploejs')
+    ejemploejs(
         @Res() res,
-    ){
-        res.render('ejemplo',{
-            datos:{
-                nombre:'Mishelle',
+    ) {
+        res.render('ejemplo', {
+            datos: {
+                nombre: 'Adrian',
                 suma: this.suma, // Definicion de la funcion
                 joi: Joi,
-            } ,
+            },
         });
     }
+
     suma(numUno, numDos) {
         return numUno + numDos;
     }
@@ -86,7 +91,8 @@ export class UsuarioController {
                 roles: ['Administrador'],
             };
             return 'ok';
-        } else if (username === 'vicente' && password === '1234') {
+        }
+        if (username === 'vicente' && password === '1234') {
             session.usuario = {
                 nombre: 'Vicente',
                 userId: 2,
@@ -94,7 +100,7 @@ export class UsuarioController {
             };
             return 'ok';
         }
-        throw new BadRequestException('Error', 'Error autenticando');
+        throw new BadRequestException('No envia credenciales');
     }
 
     @Get('sesion')
@@ -104,151 +110,96 @@ export class UsuarioController {
         return session;
     }
 
-    //desloguearse
     @Get('logout')
     logout(
         @Session() session,
         @Req() req,
-    ){
-        session.usuario=undefined;
+    ) {
+        session.usuario = undefined;
         req.session.destroy();
         return 'Deslogueado';
     }
 
-    /*@Get('hola')
-    hola(): string {
-        return `*/
     @Get('hola')
     hola(
         @Session() session,
     ): string {
-        let contenidoHTML='';
-
-        if(session.usuario){
-            contenidoHTML='<ul>';
+        let contenidoHTML = '';
+        if (session.usuario) {
+            contenidoHTML = '<ul>';
             session.usuario
                 .roles
-                .foreach(
-                    (nombreRol)=>{
-                        contenidoHTML=contenidoHTML + `<li>${nombreRol}</li>`;
-},
-    );
-contenidoHTML +='</ul>';
-    }
-       return`
+                .forEach(
+                    (nombreRol) => {
+                        contenidoHTML = contenidoHTML + `<li>${nombreRol}</li>`;
+                    },
+                );
+            contenidoHTML += '</ul>';
+        }
+
+        return `
 <html>
-<head>
-             <title>EPN</title>
-</head>
-<body>
-<--! Condicion ? si : no -->
-  <h1>Mi primera página web ${
-            session.usuario ? session.usuario.nombre:''
-       }</h1> 
-  $ {contenidoHTML} 
-  <!--<ul>
-  //roles
-        <li>Supervisor</li>
-        <li>Administrador</li>
-</ul>--> 
+        <head> <title>EPN</title> </head>
+        <body>
+        <--! CONDICION ? SI : NO -->
+        <h1> Mi primera pagina web ${
+            session.usuario ? session.usuario.nombre : ''
+        }</h1>
+        ${contenidoHTML}
 </body>
 </html>`;
     }
 
-    //Get /model/:id
+    // GET /modelo/:id
     @Get(':id')
-    obtenerUsuario(
+    obtenerUnUsuario(
         @Param('id') identificador: string,
-    ): Promise<UsuarioEntity> {
+    ): Promise<UsuarioEntity | undefined> {
         return this._usuarioService
-            .encontrarUno(Number(identificador));
+            .encontrarUno(
+                Number(identificador),
+            );
     }
-    /*@Post()
-crearUnUsuario( //nombre de la funcion
-    @Body() usuario:UsuarioEntity
-) : Promise<UsuarioEntity>{   //devuelve una promesa de usuarioEntity
-    return this._usuarioService
-        .crearUno
-        (usuario   //mandamos el usuario
-        );
-}*/
 
-    /*   @Post()
-       async crearUnUsuario(
-           @Body() usuario: UsuarioEntity,
-       ): Promise<UsuarioEntity> {
-           const usuarioCreateDTO = new UsuarioCreateDto();
-           usuarioCreateDTO.nombre = usuario.nombre;
-           usuarioCreateDTO.cedula = usuario.cedula;
-           const errores = await validate(usuarioCreateDTO);
-           if (errores.length > 0) {
-               throw new BadRequestException('Error validando');
-           } else {
-               return this._usuarioService
-                   .crearUno(
-                       usuario
-                   );
-           }
-       }*/
     @Post()
-    async crearUsuario(
+    async crearUnUsuario(
         @Body() usuario: UsuarioEntity,
-        @Session() session,
-    ): Promise<UsuarioEntity> {
-        const isAdm = session.usuario.roles.find(rol => {
-            return rol === 'Administrador';
-        });
-        if (!isAdm) {
-            throw new UnauthorizedException('Error', 'No cuenta con permisos para realizar la acción');
-        }
+        @Res() res,
+    ): Promise<void> {
         const usuarioCreateDTO = new UsuarioCreateDto();
         usuarioCreateDTO.nombre = usuario.nombre;
         usuarioCreateDTO.cedula = usuario.cedula;
         const errores = await validate(usuarioCreateDTO);
         if (errores.length > 0) {
-            throw new BadRequestException('Error validando');
+            res.redirect(
+                '/usuario/ruta/crear-usuario?error=Error validando',
+            );
+            // throw new BadRequestException('Error validando');
         } else {
-            return this._usuarioService
-                .crearUno(
-                    usuario,
+            try {
+                await this._usuarioService
+                    .crearUno(
+                        usuario,
+                    );
+                res.redirect(
+                    '/usuario/ruta/mostrar-usuarios',
                 );
+            } catch (error) {
+                console.error(error);
+                res.redirect(
+                    '/usuario/ruta/crear-usuario?error=Error del servidor',
+                );
+            }
+
         }
+
     }
 
-    /*  @Put(':id')
-    actualizarUnUsuario(
-        @Body() usuario: UsuarioEntity,
-        @Param('id') id: string,
-    ): Promise<UsuarioEntity> {
-
-        const usuarioUpdateDTO.nombre = new UsuarioUpdateDto();
-        usuarioUpdateDTO.nombre=usuario.nombre;
-        usuarioUpdateDTO.cedula= usuario.cedula;
-        usuarioUpdateDTO.id= +id;
-        const errores = await validate (usuarioUpdateDTO);
-
-        if(errores.length>0){
-            throw new BadRequestException('Error vlidando')
-        }
-        else{
-
-            return this._usuarioService
-                .actualizarUno(
-                    +id,
-                    usuario
-                );
-        }}*/
-
-
-    @Put()
+    @Put(':id')
     async actualizarUnUsuario(
         @Body() usuario: UsuarioEntity,
         @Param('id') id: string,
-        @Session() session,
-    ) {
-        const isAdm = session.usuario.roles.find(rol => {
-            return (rol === 'Administrador' || rol === 'Supervisor');
-        });
+    ): Promise<UsuarioEntity> {
         const usuarioUpdateDTO = new UsuarioUpdateDto();
         usuarioUpdateDTO.nombre = usuario.nombre;
         usuarioUpdateDTO.cedula = usuario.cedula;
@@ -263,36 +214,20 @@ crearUnUsuario( //nombre de la funcion
                     usuario,
                 );
         }
+
     }
 
-    // @Delete(':id')
-    // eliminarUno(
-    //     @Param('id') id: string,
-    // ): Promise<DeleteResult> {
-    //     return this._usuarioService
-    //         .borrarUno(
-    //             +id
-    //         );
-    // }
-
-    @Delete()
+    @Delete(':id')
     eliminarUno(
         @Param('id') id: string,
-        @Session() session,
     ): Promise<DeleteResult> {
-        const isAdm = session.usuario.roles.find(rol => {
-            return rol === 'Administrador';
-        });
-        if (!isAdm) {
-            throw new UnauthorizedException('Error', 'No cuenta con permisos para realizar la acción');
-        }
         return this._usuarioService
             .borrarUno(
                 +id,
             );
     }
 
-  /*  @Get()
+    /*@Get()
     async buscar(
         @Query('skip') skip?: string | number,
         @Query('take') take?: string | number,
