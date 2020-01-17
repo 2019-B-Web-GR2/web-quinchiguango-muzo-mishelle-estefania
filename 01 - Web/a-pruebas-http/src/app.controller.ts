@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpCode, Param, Post, Query} from '@nestjs/common';
+import {Body, Controller, Get, HttpCode, Param, Post, Query, Res} from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()   //recibe el segmento de la Url 
@@ -11,6 +11,13 @@ export class AppController {
     return this.appService.getHello();  
   }
 
+  //reenderizar el login
+  @Get ('login')
+  login(
+      @Res() res,
+  ){
+    res.render('login/login');
+  }
 
   //private obtenerSegundos() : number{}
 

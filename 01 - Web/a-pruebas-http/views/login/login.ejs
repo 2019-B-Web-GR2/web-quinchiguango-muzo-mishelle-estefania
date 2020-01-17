@@ -1,0 +1,58 @@
+<%- include('../compartido/cabecera')%>
+
+<div class ="container">
+    <h1> Login </h1>
+    <p> Ingresa tus credenciales</p>
+
+    <form action="/usuario/login"
+          method="POST"
+    >
+        <div class="form-group">
+
+            <label for="usernameID">username</label>  //LABEL Y EL INPUT NO SE DEBEN SEPARAR input debe tener un nombre y un identificador
+            <input id="usernameID"
+                   type="text"
+                   name="username"
+                   placeholder="Ej: Mishelle.quinchiguango "
+                   title="Ingresar su username"
+                   class="form-control">
+            <small id="usernameIDHelp"
+                   Class=""form-text text-muted>
+                Ingresa tu nombre de usuario valido
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordID">Password</label>  //LABEL Y EL INPUT NO SE DEBEN SEPARAR input debe tener un nombre y un identificador
+            <input id="passwordID"
+                   type="password"
+                   name="password"
+                   placeholder="Ej:******"
+                   title="Ingresa el password del usuario"
+                   class="form-control">
+            <small id="cedulaIDHELP"
+                   Class=""form-text text-muted>
+                Ingresa el password
+            </small>
+        </div>
+
+        <!--  <button type ="submit">Submit</button> //se va a google
+          <button type ="reset">Reset</button>
+          <button type ="button">Boton</button>
+          <button >Boton sin nada</button> //x defecto es un boton tipo reset-->
+
+        <button type ="submit"
+                class=" "btn btn-success
+        >
+           Login
+        </button>
+
+        <button type ="reset"
+                class="btn btn-secondary"
+        >
+            Limpiar Formulario
+        </button>
+    </form>
+</div>
+
+<%- include('../compartido/pie-de-pagina')%>
