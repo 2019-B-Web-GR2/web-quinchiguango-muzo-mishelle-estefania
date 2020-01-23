@@ -1,45 +1,60 @@
 <%- include('../../compartido/cabecera')%>
 
-<div>
+<% const estaEditando= usuario!=undefined%> <!--para para mostrar un contenido o otro -->
 
-</div>
+<div class="container">
+    <% if(datos.error){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= datos.error %>
+        </div>
+    <% } %>
 
-<div class ="container">
-    <h1> Crear Usuario </h1>
+    <!-- CONDICION ? TRUE : FALSE -->
+    <h1><%= estaEditando ? 'Editando ' + datos.usuario.nombre : 'Crear Usuario' %></h1>
 
-    <form action="https://www.google.com"
-    method="GET"
+    <form action="/usuario<%= estaEditando ? '/' + datos.usuario.id : '' %>"
+          method="POST"
     >
         <div class="form-group">
-        <label for="nombreID">Nombre</label>  //LABEL Y EL INPUT NO SE DEBEN SEPARAR input debe tener un nombre y un identificador
-        <input id="nombreID"
-               type="text"
-               name="nombre"
-               placeholder="Ej: Mishelle Qunchiguango"
-               title="Ingresar nombre de usuario"
-               class="form-control">
-            <small id="nombreIDHELP"
-            Class=""form-text text-muted>
-                Ingresar un nombre valido
+            <label for="nombreID">Nombre</label>
+            <input id="nombreID"
+                   type="text"
+                   name="nombre"
+                   value="<%= estaEditando ? datos.usuario.nombre : '' %>"
+                   placeholder="Ej: Mishelle Quinchiguango "
+                   title="Ingresar nombre de usuario"
+                   class="form-control">
+            <small id="nombreIDHelp"
+                   class="form-text text-muted">
+                Ingresa un nombre mayor a 3 caracteres y menor a 10.
             </small>
         </div>
-      <!--  <button type ="submit">Submit</button> //se va a google
-        <button type ="reset">Reset</button>
-        <button type ="button">Boton</button>
-        <button >Boton sin nada</button> //x defecto es un boton tipo reset-->
-
-        <button type ="submit"
-        class=" "btn btn-success
+        <div class="form-group">
+            <label for="cedulaID">Cedula</label>
+            <input id="cedulaID"
+                   type="text"
+                   name="cedula"
+                   value="<%= estaEditando ? datos.usuario.cedula : '' %>"
+                    <%= estaEditando ? 'disabled' : '' %>
+                   placeholder="Ej: 1723902472"
+                   title="Ingresar la cedula del usuario"
+                   class="form-control">
+            <small id="cedulaIDHelp"
+                   class="form-text text-muted">
+                Ingresar una cedula válida.
+            </small>
+        </div>
+        <button type="submit"
+                class="btn btn-success"
         >
             Crear Usuario
         </button>
-
-        <button type ="reset"
-        class="btn btn-secondary"
+        <button type="reset"
+                class="btn btn-secondary"
         >
-            Limpiar Formulario
+            Limpiar formulario
         </button>
     </form>
-</div>
 
-<%- include('../../compartido/pie-de-pagina')%>
+</div>
+<%- include('../../compartido/pie-de-pagina') %>

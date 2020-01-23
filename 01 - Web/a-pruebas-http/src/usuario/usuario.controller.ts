@@ -31,6 +31,8 @@ export class UsuarioController {
 
     @Get('ruta/mostrar-usuarios')
     async rutaMostrarUsuarios(
+        @Query('mensaje') mensaje: string,
+        @Query('error') error: string,
         @Res() res,
     ) {
         const usuarios = await this._usuarioService.buscar();
@@ -39,7 +41,9 @@ export class UsuarioController {
             {
                 datos: {
                     // usuarios:usuarios -> nueva sintaxis,
+                    mensaje,
                     usuarios,
+                    error,
                 },
             },
         );
@@ -58,6 +62,42 @@ export class UsuarioController {
                 },
             },
         );
+    }
+
+    @Get('ruta/editar-usuario/:idUsuario')
+    async rutaEditarUsuario(
+        @Query('error') error: string,
+        @Param('idUsuario') idUsuario: string,
+        @Res() res,
+    ) {
+        const consulta = {
+            id: idUsuario,
+        };
+        try {
+            const arregloUsuarios = await this._usuarioService.buscar(consulta);
+            if (arregloUsuarios.length > 0) {
+                res.render(
+                    'usuario/rutas/crear-usuario',
+                    {
+                        datos: { error, usuario: arregloUsuarios[0] },
+                    },
+                );
+
+            }else{
+                /*res.status(400)
+                res.send('ERROR ENCONTRANDP USUARIO')*/
+                res.redirect(
+                    '/usuario/ruta/buscar-mostrar-usuarios?error=No existe ese usuario'
+                );
+            }
+
+        } catch (error) {
+            console.log(error);
+            res.redirect(
+                '/usuario/ruta/buscar-mostrar-usuarios?error=Error editando usuario',
+            );
+        }
+
     }
 
     @Get('ejemploejs')
@@ -182,7 +222,7 @@ export class UsuarioController {
                         usuario,
                     );
                 res.redirect(
-                    '/usuario/ruta/mostrar-usuarios',
+                    '/usuario/ruta/mostrar-usuarios?mensaje=El usuario se creo correctamente',
                 );
             } catch (error) {
                 console.error(error);
@@ -195,10 +235,11 @@ export class UsuarioController {
 
     }
 
-    @Put(':id')
+    @Post(':id')  //ya no es put es post
     async actualizarUnUsuario(
         @Body() usuario: UsuarioEntity,
         @Param('id') id: string,
+        @Res() res,
     ): Promise<UsuarioEntity> {
         const usuarioUpdateDTO = new UsuarioUpdateDto();
         usuarioUpdateDTO.nombre = usuario.nombre;
@@ -206,6 +247,10 @@ export class UsuarioController {
         usuarioUpdateDTO.id = +id;
         const errores = await validate(usuarioUpdateDTO);
         if (errores.length > 0) {
+
+            res.render(
+                '/usuario/ruta/editar-usuario/'+id+'?error=Usuario no valido'
+            );
             throw new BadRequestException('Error validando');
         } else {
             return this._usuarioService
@@ -213,6 +258,9 @@ export class UsuarioController {
                     +id,
                     usuario,
                 );
+            res.render(
+                '/usuario/ruta/mostrar-usuarios? mensaje= El usuario' + usuario.nombre+'actualizado'
+            );
         }
 
     }
@@ -227,7 +275,24 @@ export class UsuarioController {
             );
     }
 
-    /*@Get()
+    @Post(':id')
+    async eliminarUnoPost(
+        @Param('id') id: string,
+        @Res() res,
+    ): Promise<void> {
+        try {
+            await this._usuarioService
+                .borrarUno(
+                    +id,
+                );
+            res.redirect(`/usuario/ruta/mostrar-usuarios?mensaje=Usuario ID: ${id} eliminado`);
+        } catch (error) {
+            console.error(error);
+            res.redirect('/usuario/ruta/mostrar-usuarios?error=Error del servidor');
+        }
+    }
+
+    @Get()
     async buscar(
         @Query('skip') skip?: string | number,
         @Query('take') take?: string | number,
@@ -273,6 +338,6 @@ export class UsuarioController {
                 take as number,
                 order,
             );
-    }*/
+    }
 
 }
