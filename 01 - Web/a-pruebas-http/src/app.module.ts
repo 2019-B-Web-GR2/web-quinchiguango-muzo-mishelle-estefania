@@ -10,6 +10,7 @@ import {UsuarioService} from "./usuario/usuario.service";
   imports: [
 
       UsuarioModule,
+      MascotasModule,
     TypeOrmModule.forRoot({
       name: 'default',  //nombre cadena de conex
       type: 'mysql',
@@ -20,7 +21,8 @@ import {UsuarioService} from "./usuario/usuario.service";
       database: 'web',
       dropSchema: true,
       entities: [
-          UsuarioEntity
+          UsuarioEntity,
+          MascotasEntity
       ],
       synchronize: true, // Crear --> true, Conectar -->false
       })

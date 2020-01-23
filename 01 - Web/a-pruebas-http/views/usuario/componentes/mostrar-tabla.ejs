@@ -1,46 +1,43 @@
-<%usuarios.forEach((usuario)=>{%>
-<p><%= usuario.nombre%></p>
-
-<table class="table"> <--! table-->
-    <thead> <--! thead-->
-    <tr> <--! fila de la tabla  (table row)-->
-        <th scope="col"> <--! table header-->
+<table class="table"> <!-- table -->
+    <thead> <!-- thead -->
+    <tr> <!-- table row -->
+        <th scope="col"> <!-- table header -->
             ID
-
         </th>
-
+        <th scope="col">Nombre</th>
+        <th scope="col">Cedula</th>
+        <th scope="col">Acciones</th>
     </tr>
     </thead>
     <tbody>
-    <%usuarios.forEach((usuario)=>{%>
-    <tr>  <--! table row-->
-        <th scope="row">1</th><%= usuario.id%>
-        <td>Mishelle</td>  <--! table detail-->
-        <td>1723902472</td>
-        <td>
-            <button type ="button" class="btn btn-info">
-                Editar
-            </button>
-            <button type ="button" class="btn btn-danger">
-                Eliminar
-            </button>
-        </td> <!--tabla detalle-->
-
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
+    <% usuarios.forEach( (usuario) => {%>
+        <tr> <!-- table row -->
+            <th scope="row">
+                <%= usuario.id%>
+            </th> <!-- table header -->
+            <td>
+                <%= usuario.nombre%>
+            </td> <!-- table detail -->
+            <td>
+                <%= usuario.cedula%>
+            </td> <!-- table detail -->
+            <td>
+                <a href="/usuario/ruta/editar-usuario/<%= usuario.id %>">
+                    <button type="button"
+                            class="btn btn-info">
+                        Editar
+                    </button>
+                </a>
+                <form action="/usuario/<%= usuario.id %>"
+                      method="POST"
+                >
+                    <button type="submit"
+                            class="btn btn-danger">
+                        Eliminar
+                    </button>
+                </form>
+            </td> <!-- table detail -->
+        </tr>
+    <%}); %>
+    </tbody> <!-- tbody -->
 </table>
-
-
-<%});%>

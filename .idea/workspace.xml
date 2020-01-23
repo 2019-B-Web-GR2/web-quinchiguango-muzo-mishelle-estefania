@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="380f739f-c248-4e21-9aa5-e874a9785834" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/mascotas/mascotas.entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/mascotas/mascotas.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/usuario/rutas/crear-usuario.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/usuario/rutas/crear-usuario.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/src/usuario/usuario.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/usuario/componentes/mostrar-tabla.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/01 - Web/a-pruebas-http/views/usuario/componentes/mostrar-tabla.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +75,7 @@
       <workItem from="1578610201659" duration="6379000" />
       <workItem from="1579202807688" duration="6068000" />
       <workItem from="1579289045272" duration="5456000" />
-      <workItem from="1579807605912" duration="2984000" />
+      <workItem from="1579807605912" duration="5808000" />
     </task>
     <servers />
   </component>

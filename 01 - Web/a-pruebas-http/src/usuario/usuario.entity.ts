@@ -36,4 +36,10 @@ export class UsuarioEntity {
     })
     cedula:string;
 
+    @OneToMany(
+        typeFunctionOrTarget=> MascotasEntity, //Entidad
+        inverseSide:mascotas => mascotas.usuario, //nombre del campo
+    )
+    mascotas: MascotasEntity[];
+
 }
